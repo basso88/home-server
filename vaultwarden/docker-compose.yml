@@ -1,0 +1,14 @@
+
+services:
+  vaultwarden:
+    image: vaultwarden/server:latest
+    container_name: vaultwarden
+    restart: always
+    volumes:
+    - /srv/vaultwarden/data:/data
+    ports:
+    - "8080:80"
+    environment:
+      ADMIN_TOKEN: "myp@ssword"
+      DOMAIN: "https://corlud-server.duckdns.org:8080"
+      WEBSOCKET_ENABLED: "true"
