@@ -1,0 +1,18 @@
+---
+services:
+  jellyfin:
+    image: lscr.io/linuxserver/jellyfin:latest
+    container_name: jellyfin
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Etc/UTC
+      - JELLYFIN_PublishedServerUrl=http://192.168.1.100 #optional
+    volumes:
+      - /path/to/jellyfin/library:/config
+      - /home/basso/media/tvshows
+      - /home/basso/media/movies
+    ports:
+      - 8096:8096
+      - 7359:7359/udp #optional
+    restart: unless-stopped
