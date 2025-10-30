@@ -14,8 +14,8 @@ services:
       - PEERPORT= #optional
       - HOST_WHITELIST= #optional
     volumes:
-      - /srv/transmission/config
-      - /home/basso/downloads #optional
+      - /srv/transmission/config:/config
+      - /home/basso/downloads:/downloads #optional
     ports:
       - 9091:9091
       - 51413:51413
