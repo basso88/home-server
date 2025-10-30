@@ -16,7 +16,6 @@ services:
     volumes:
       - /srv/transmission/config
       - /home/basso/downloads #optional
-      - #/path/to/watch/folder:/watch #optional
     ports:
       - 9091:9091
       - 51413:51413
