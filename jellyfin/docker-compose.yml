@@ -9,9 +9,9 @@ services:
       - TZ=Etc/UTC
       - JELLYFIN_PublishedServerUrl=http://192.168.1.100 #optional
     volumes:
-      - /srv/jellyfin/library
-      - /home/basso/media/tvshows
-      - /home/basso/media/movies
+      - /srv/jellyfin/library:/library
+      - /home/basso/media/tvshows:/data/tvshows
+      - /home/basso/media/movies:/data/movies
     ports:
       - 8096:8096
       - 7359:7359/udp #optional
