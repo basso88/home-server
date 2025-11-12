@@ -4,6 +4,8 @@ This repo contains the Docker-based configuration for my personal server plus ot
     Pihole
     nginx
     Vaultwarden
+    Transmission
+    Jellyfin
 
 
 File structure
@@ -12,6 +14,10 @@ homelab/
 ├── pihole/
 │   └── docker-compose.yml
 ├── npm/
+│   └── docker-compose.yml
+├── transmission/
+│   └── docker-compose.yml
+├── jellyfin/
 │   └── docker-compose.yml
 └── vaultwarden/
     └── docker-compose.yml
