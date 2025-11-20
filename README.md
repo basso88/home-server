@@ -9,7 +9,7 @@ This repo contains the Docker-based configuration for my personal server plus ot
 
 
 File structure
-
+```
 homelab/
 ├── pihole/
 │   └── docker-compose.yml
@@ -21,6 +21,7 @@ homelab/
 │   └── docker-compose.yml
 └── vaultwarden/
     └── docker-compose.yml
+```
 
 
 #### Configuration files directory
