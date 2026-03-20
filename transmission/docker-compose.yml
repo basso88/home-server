@@ -1,0 +1,26 @@
+
+services:
+  transmission:
+    image: lscr.io/linuxserver/transmission:latest
+    container_name: transmission
+    network_mode: host
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/Rome
+      - TRANSMISSION_WEB_HOME= #optional
+      - TRANSMISSION_WATCH_DIR_ENABLED=false
+      - USER= #optional
+      - PASS= #optional
+      - WHITELIST= #optional
+      - PEERPORT= #optional
+      - HOST_WHITELIST= #optional
+    volumes:
+      - /mnt/external_drive/downloads:/downloads
+      - /srv/transmission/config:/config
+      - /srv/transmission/watch:/watch
+    ports:
+      - 9091:9091
+      - 51413:51413
+      - 51413:51413/udp
+    restart: unless-stopped
