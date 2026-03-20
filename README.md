@@ -28,50 +28,50 @@ homelab/
 
 - Samba | /etc/samba/smb.conf
 - CUPS | /etc/cups
-- Safe shut down systemd service | /etc/systemd/system/safe_shutdown.service
+- Safe shut down systemd service | ...
  
 #### Scripts
 
 ##### DDNS update
-`~/duckdns/ddns_update.sh`
+`~/duckdns/ddns_update
 
 ```bash
-#!/bin/bash
+#!/usr/bin/env bash
 
-echo url="https://www.duckdns.org/update?domains=corlud-server&token=token_goes_here=" | curl -k -o ~/duckdns/duck.log -K -
+token= <token>
+domain=bassoserver
+
+echo url="https://www.duckdns.org/update?domains=$domain&token=$token&ip=" | curl -k -o ~/duckdns/duck.log -K -
+echo -e "\n" >> ~/duckdns/duck.log
+echo last update: &(date) >> ~/duckdns/duck.log
 ```
+
 I want the publicIP to be updating every 5 minutes...
 Open crontab
 `crontab -e` 
 Copy and paste
 ```bash
 #DuckDNS public IP check
-*/5 * * * * ~/duckdns/ddns_update.sh >/dev/null 2>&1
+*/5 * * * * ~/duckdns/ddns_update
 ```
 
-##### Safe shutdown
+##### Safe shutdown (unfinished)
 ~/safe_shutdown.sh
 
 ```bash
-#!/bin/bash
-
-# Home server safe shutdown triggered by router unreachable (power outage detection)
 router="192.168.1.1"
+log="/home/basso/safe_shutdown.log"
 
 count=0
 while true; do
-    ping -c 1 $router > /dev/null 2>&1 #ping -c 1 pings once per loop
-    if [ $? -ne 0 ]; then
-        ((count++))
-    else
-        count=0
-    fi
-
-    if [ $count -eq 12 ]; then
-        echo "$(date) | router has been unreachable for 1 minute, system shutting down..." >> /var/log/autoshutdown.log
-        shutdown -h now
-            break
-    fi
-    sleep 5
-done 
+	if ping -c 1 $router > /dev/null 2>&1; then
+		echo "power ok, $(date)" > $log
+		count=0
+		sleep 5
+	else
+		echo "power out, system shutting down..." >> $log
+		((count++))
+		sleep 5
+	fi
+done
 ```
