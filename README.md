@@ -47,13 +47,25 @@ echo last update: &(date) >> ~/duckdns/duck.log
 ```
 
 I want the publicIP to be updating every 5 minutes...
-Open crontab
+
 `crontab -e` 
-Copy and paste
-```bash
+
 #DuckDNS public IP check
-*/5 * * * * ~/duckdns/ddns_update
+`*/5 * * * * ~/duckdns/ddns_update`
+
+##### Auto Update
+~/automations/autoupdate
+
+```bash
+apt update && apt upgrade -y > /home/basso/autoupdate.log 2>&1
+echo "$(date)" >> /home/basso/autoupdate.log
 ```
+Update every sunday at 6PM
+
+`sudo crontab -e`
+
+#System update
+`0 18 * * 0 /home/basso/automations/autoupdate`
 
 ##### Safe shutdown (unfinished)
 ~/safe_shutdown.sh
