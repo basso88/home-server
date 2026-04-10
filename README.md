@@ -24,16 +24,17 @@ homelab/
 ```
 
 
-#### Configuration files directory
+## Configuration files directories
 
 - Samba | /etc/samba/smb.conf
 - CUPS | /etc/cups
 - Safe shut down systemd service | ...
  
-#### Scripts
+## Scripts
 
-##### DDNS update
-`~/duckdns/ddns_update
+#### DDNS update
+
+`~/duckdns/ddns_update`
 
 ```bash
 #!/usr/bin/env bash
@@ -50,10 +51,10 @@ I want the publicIP to be updating every 5 minutes...
 
 `crontab -e` 
 
-#DuckDNS public IP check
+`#DuckDNS public IP check`
 `*/5 * * * * ~/duckdns/ddns_update`
 
-##### Auto Update
+#### Auto Update
 ~/automations/autoupdate
 
 ```bash
@@ -64,10 +65,10 @@ Update every sunday at 6PM
 
 `sudo crontab -e`
 
-#System update
+`#System update`
 `0 18 * * 0 /home/basso/automations/autoupdate`
 
-##### Safe shutdown (unfinished)
+#### Safe shutdown (unfinished)
 ~/safe_shutdown.sh
 
 ```bash
